@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperInterface.BoardMapper" >
+
+<select id="aidBList" resultType="vo.BoardVO">
+	select * from board where id=#{id} order by seq desc
+</select>
+
+<select id="selectList" resultType="vo.BoardVO">
+	select * from board order by seq desc
+</select>
+
+<select id="selectOne" resultType="vo.BoardVO" >
+	select * from board where seq=#{seq}
+</select>
+<!-- #{seq} : parameter 로 전달된 vo 의 seq 라는 컬럼의 value 가 전달됨  
+			 -> getSeq() 로 처리함	-->
+
+<update id="countUp">
+	update board set cnt=cnt+1 where seq=#{seq}
+</update>
+
+<insert id="insert">
+	insert into board(title,id,content) values(#{title},#{id},#{content})
+</insert>
+
+<update id="update">
+	update board set title=#{title}, content=#{content} where seq=#{seq}
+</update>
+
+<delete id="delete">
+	delete from board where seq=#{seq}
+</delete>
+
+</mapper>  

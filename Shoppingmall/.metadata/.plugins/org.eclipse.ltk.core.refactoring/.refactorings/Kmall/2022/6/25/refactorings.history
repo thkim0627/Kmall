@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;Kmall&apos;&#x0D;&#x0A;- Original project: &apos;Kmall&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     favicon1.ico&#x0D;&#x0A;     favicon2.ico&#x0D;&#x0A;     favicon3.ico" description="Delete elements" element1="src/main/webapp/resources/favicon/favicon2.ico" element2="src/main/webapp/resources/favicon/favicon1.ico" element3="src/main/webapp/resources/favicon/favicon3.ico" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1655170827142" subPackages="false" version="1.0"/>
+</session>

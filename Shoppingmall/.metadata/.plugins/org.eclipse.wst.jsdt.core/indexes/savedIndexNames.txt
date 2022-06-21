@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Development\Project\Shoppingmall\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1269495520.index
+370326167.index
+3904407398.index
+1093878173.index
+679235696.index
+2247340154.index
+1962666081.index

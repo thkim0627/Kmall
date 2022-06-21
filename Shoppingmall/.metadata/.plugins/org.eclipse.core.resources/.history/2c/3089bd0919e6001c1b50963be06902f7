@@ -1,0 +1,47 @@
+// 홈페이지 메인이미지 영역
+var div_length = $("#slideBox>div").length; // slideBox에서 div의 length값 가져오기
+var srt = 0;
+var idx = 0;
+
+// #slide_imgDotCont 메인이미지 수동 슬라이드 버튼 클릭 이벤트
+$("section>a").click(function() {
+	idx = $(this).index();
+	srt = idx;
+	$(this).addClass("slide_homeImgON").siblings().removeClass("slide_homeImgON");
+	$("#slideBox>div").eq(idx).addClass("slide_homeImgON").siblings().removeClass("slide_homeImgON");
+}); // section>a_click
+
+// slideBox 메인이미지 자동 슬라이드
+var slide_auto = setInterval(slide_autoRun, 5000);
+
+function slide_autoRun() {
+	srt++;
+
+	if (srt == div_length) {
+		srt = 0;
+	} // if
+
+	$("section>a").eq(srt).addClass("slide_homeImgON").siblings().removeClass("slide_homeImgON");
+	$("#slideBox>div").eq(srt).addClass("slide_homeImgON").siblings().removeClass("slide_homeImgON");
+} // slide_autoRun
+
+// 홈페이지 신상품 노출 영역
+const goodsList = document.querySelector('#goodsList');
+const baseRoute = 'resources/image/';
+
+for (let i = 1; i <= 4; i++) {
+	const newDiv = document.createElement('div');
+	newDiv.classList.add('homeGoodsBox');
+	const newLi = document.createElement('li');
+	newLi.classList.add('homeGoods');
+	const newImg = document.createElement('img');
+	newImg.src = `${baseRoute}img${i}.jpg`;
+	const newSpan = document.createElement('span');
+	newSpan.innerText = `#${i}`;
+	newSpan.style.backgroundColor = 'lightblue';
+
+	goodsList.appendChild(newLi);
+	newLi.appendChild(newDiv);
+	newDiv.appendChild(newImg);
+	newDiv.appendChild(newSpan);
+} // for_i
