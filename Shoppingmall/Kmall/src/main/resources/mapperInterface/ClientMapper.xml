@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<!-- interface를 통해 *Mapper에 접근한다.
+		 interface *Mapper.java의 패키지명, 파일명과  
+   		 *Mapper.xml의 패키지명, 파일명이 namespace의 값과 같아야된다. --> 
+	<mapper namespace="mapperInterface.ClientMapper">
+	
+	<!-- 1.회원 조회 -->
+	<select id="selectClientList" resultType="vo.ClientVO">
+		select id, password1, password2, name, address, number, email from client;
+	</select>
+	
+	<!-- 2.로그인 + 회원페이지 -->
+	<select id="selectClientOne" resultType="vo.ClientVO">
+		select id, password1, password2, name, address, number, email from client where id=#{id};
+	</select>
+	
+	<!-- 3.회원가입 -->
+	<insert id="insertClient">
+		insert into client values(#{id}, #{password1}, #{password2}, #{name}, #{address}, #{number}, #{email});
+	</insert>
+	
+	<!-- 4.회원정보 수정 -->
+	<update id="updateClient">
+		update client set password1=#{password1}, password2=#{password2}, address=#{address}, number=#{number}, email=#{email} 
+		where id=#{id};
+	</update>
+	
+	<!-- 5.회원정보 삭제 -->
+	<delete id="deleteClient">
+		delete from client where id=#{id};
+	</delete>
+
+</mapper>  
