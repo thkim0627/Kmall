@@ -166,22 +166,22 @@ public class MemberController {
 		return mv;
 	} //axmlist
 	
-	//** ID 중복 확인
-	@RequestMapping(value = "/idDupCheck", method=RequestMethod.GET)
-	public ModelAndView idDupCheck(ModelAndView mv, MemberVO vo) {
-		// 입력한 newID 보관
-		mv.addObject("newId", vo.getId());
-		vo = service.selectOne(vo);
-		if ( vo!=null ) { 
-			// id 존재 -> 사용불가능
-			mv.addObject("idUse", "F");
-		}else {
-			// id 존재하지 않음 -> 사용가능
-			mv.addObject("idUse", "T");
-		}
-		mv.setViewName("member/idDupCheck");
-		return mv;
-	} //idDupCheck
+//	//** ID 중복 확인
+//	@RequestMapping(value = "/idDupCheck", method=RequestMethod.GET)
+//	public ModelAndView idDupCheck(ModelAndView mv, MemberVO vo) {
+//		// 입력한 newID 보관
+//		mv.addObject("newId", vo.getId());
+//		vo = service.selectOne(vo);
+//		if ( vo!=null ) { 
+//			// id 존재 -> 사용불가능
+//			mv.addObject("idUse", "F");
+//		}else {
+//			// id 존재하지 않음 -> 사용가능
+//			mv.addObject("idUse", "T");
+//		}
+//		mv.setViewName("member/idDupCheck");
+//		return mv;
+//	} //idDupCheck
 	
 	// 1-1.로그인폼으로 이동
 	@RequestMapping(value = "/loginf", method=RequestMethod.GET)
@@ -219,12 +219,15 @@ public class MemberController {
 				mv.setViewName("redirect:home");
 			} else {
 				// 비밀번호 일치하지 않음
-				out.println("<script>alert('아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.'); location.href='loginf';</script>"); 
+				out.println("<script>alert('아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.');</script>"); 
+				mv.setViewName("member/loginForm");
 				out.flush();
 			}
 		} else {
 			// 아이디 일치하지 않음
-			out.println("<script>alert('아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.'); location.href='loginf';</script>"); 
+			// location.href='loginf';
+			out.println("<script>alert('아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.');</script>"); 
+			mv.setViewName("member/loginForm");
 			out.flush();
 		}
 		// 3.view 처리
@@ -253,8 +256,10 @@ public class MemberController {
 	//@RequestMapping(value = "/join", method=RequestMethod.GET)
 	// => 405: Request method 'POST' not supported
 	@RequestMapping(value = "/join", method=RequestMethod.POST)
-	public ModelAndView join(HttpServletRequest request, 
-							ModelAndView mv, MemberVO vo) throws IOException {
+	public ModelAndView join(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, MemberVO vo) throws IOException {
+		
+		// 한글처리
+		response.setContentType("text/html; charset=UTF-8");
 		
 		System.out.println("***** vo => "+vo);
 		
