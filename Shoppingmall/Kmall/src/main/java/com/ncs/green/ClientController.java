@@ -23,7 +23,7 @@ public class ClientController {
 	@Autowired 
 	ClientService service;
 	
-	// 로그인
+	// 로그인 폼
 	@RequestMapping(value = "/clientloginf", method = RequestMethod.GET)
 	public ModelAndView clientloginf(ModelAndView mv) {
 		mv.setViewName("client/clientLoginForm");
@@ -66,11 +66,11 @@ public class ClientController {
 				out.flush();
 			}
 		} else {
-			// 아이디 일치하지 않음
+			// 아이디가 일치하지 않음
 			out.println("<script>alert('아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.');</script>");
 			mv.setViewName("client/clientLoginForm");
 			out.flush();
-		}
+		} 
 		// view
 		return mv;
 	} // clientlogin
@@ -101,5 +101,24 @@ public class ClientController {
 		// view
 		return mv;
 	} // clientjoin
+	
+	// 아이디 중복확인
+	@RequestMapping(value = "/idDoubleCheck", method = RequestMethod.GET)
+	public ModelAndView idDoubleCheck(ModelAndView mv, ClientVO vo) {
+		// 입력한 newId 보관
+		mv.addObject("newID", vo.getId());
+		
+		vo = service.selectClientOne(vo);
+		
+		if (vo != null) {
+			// 아이디가 이미 존재하면 사용불가
+			mv.addObject("idUse", "F");
+		} else {
+			// 아이디가 존재하지 않으면 사용가능
+			mv.addObject("idUse", "T");
+		}
+		mv.setViewName("client/idDoubleCheck");
+		return mv;
+	} // idDoubleCheck
 	
 } // ClientController
