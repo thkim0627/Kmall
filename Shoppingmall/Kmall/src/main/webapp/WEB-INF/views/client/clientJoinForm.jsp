@@ -5,22 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Kmall - 회원가입</title>
-<!-- 0-1.favicon -->
+<!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="resources/favicon/favicon.ico"/>
-<!-- 0-2.css -->
+<!-- css -->
 <link rel="stylesheet" type="text/css" href="resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="resources/css/join.css">
-<!-- 0-3.jqeury -->
-<script src="resources/myLib/jquery-3.2.1.min.js"></script>
-<script src="resources/myLib/inCheck.js"></script>
+<!-- js -->
+<script src="resources/js/jquery-3.2.1.min.js"></script>
+<script src="resources/js/join.js"></script>
+<script src="resources/js/regularExpression.js"></script>
 </head>
 <body>
 	<header></header>
 
-	<!-- 네비게이션바 영역 -->
+	<!-- 네비게이션바 -->
 	<nav> 
 		<div id="navbarBox"> 
-	        <!-- 쇼핑메뉴 영역 -->
+	        <!-- 쇼핑메뉴 -->
 	        <div id="shopMenuBox">
 		        <ul id="shopMenu">
 					<c:if test="${empty LoginID || not empty LoginID}">
@@ -48,11 +49,11 @@
 					</c:if>
 				</ul>
 			</div>
-			<!-- 로고 영역 -->
+			<!-- 로고 -->
 	        <div id="navbarLogo">
 	            <h1><a href="home">Kmall</a></h1>
 	        </div>
-			<!-- 회원메뉴 영역 -->
+			<!-- 회원메뉴 -->
 	        <div id="memberMenuBox">
 		        <ul id="memberMenu">
 		        	<li>
@@ -82,46 +83,69 @@
 	multipart는 폼데이터가 여러 부분으로 나뉘어 서버로 전송되는 것을 의미한다. 
 	폼이 제출될 때 이 형식을 서버에 알려주며, multipart/form-data로 지정이 되어 있어야 서버에서 정상적으로 데이터를 처리할 수 있다. -->
 	 
-	<!-- 회원가입 영역 -->
+	<!-- 회원가입 -->
 	<main>
 		<div id="joinTableBox">
 			<form action="clientjoin" method="post">
 				<table>
-					<!-- 회원가입 제목 영역 -->
+					<!-- 제목 -->
 					<caption id="joinTitle">JOIN</caption>
-					<!-- 아이디 영역 -->
+					<!-- 아이디 -->
 					<tr>
-				 		<td><input type="text" name="id" id="id" placeholder="ID"></td>
+				 		<td>
+				 			<input type="text" name="id" id="id" placeholder="ID">
+				 			<button type="button" id="idCheckBtn" onclick="idDoubleCheck()">DOUBLE CHECK</button><br>
+				 			<span id="iMessage" class="eMessage"></span>
+				 		</td>
 					</tr>
-					<!-- 비밀번호1 영역 -->
+					<!-- 비밀번호1 -->
 					<tr>
-						<td><input type="password" name="password1" id="password1" placeholder="PASSWORD1"><br></td>
+						<td>
+							<input type="password" name="password1" id="password1" class="password" placeholder="PASSWORD"><br>
+							<span id="p1Message" class="eMessage"></span>
+						</td>
+						
 					</tr>
-					<!-- 비밀번호2 영역 -->
+					<!-- 비밀번호2 -->
 					<tr>
-						<td><input type="password" name="password2" id="password2" placeholder="PASSWORD2"><br></td>
+						<td>
+							<input type="password" name="password2" id="password2" class="password" placeholder="RECONFIRM PASSWORD"><br>
+							<span id="p2Message" class="eMessage"></span>	
+						</td>
 					</tr>
-					<!-- 이름 영역 -->
+					<!-- 이름 -->
 					<tr>
-				 		<td><input type="text" name="name" id="name" placeholder="NAME"></td>
+				 		<td>
+				 			<input type="text" name="name" id="name" placeholder="NAME"><br>
+				 			<span id="nMessage" class="eMessage"></span>
+				 		</td>
 					</tr>
-					<!-- 주소 영역 -->
+					<!-- 주소 -->
 					<tr>
-				 		<td><input type="text" name="address" id="address" placeholder="ADDRESS"></td>
+				 		<td>
+				 			<input type="text" name="address" id="address" placeholder="ADDRESS"><br>
+				 			<span id="aMessage" class="eMessage"></span>	
+				 		</td>
 					</tr>
-					<!-- 핸드폰번호 영역 -->
+					<!-- 핸드폰번호 -->
 					<tr>
-				 		<td><input type="text" name="number" id="number" placeholder="PHONENUMBER"></td>
+				 		<td>
+				 			<input type="text" name="number" id="number" placeholder="PHONE NUMBER"><br>
+				 			<span id="hMessage" class="eMessage"></span>
+				 		</td>
 					</tr>
-					<!-- 이메일 영역 -->
+					<!-- 이메일 -->
 					<tr>
-				 		<td><input type="text" name="email" id="email" placeholder="EMAIL"></td>	
+				 		<td>
+				 			<input type="text" name="email" id="email" placeholder="EMAIL"><br>
+				 			<span id="eMessage" class="eMessage"></span>	
+				 		</td>	
 					</tr>
 					
-					<!-- 폼 전송 영역 -->
+					<!-- 폼 전송 -->
 					<tr>	
-						<td><br>
-							<input type="submit" id="submit" value="SIGNUP"><br>
+						<td style="margin: -1rem;"><br>
+							<input type="submit" id="submit" value="SIGNUP" onclick="return inCheck()"><br>
 							<input type="reset" id="backBtn" value="CANCEL" onclick="location.href='home'">
 						</td>
 					</tr>	
@@ -130,11 +154,11 @@
 		</div>
 	</main>
 	
-	<!-- 푸터 영역 -->
+	<!-- 푸터 -->
 	<footer>
 		<div id="homeFooterHR"></div>
 		<div id="homeFooterCont">
-			<!-- 고객센터 정보영역 -->
+			<!-- 고객센터 -->
 			<div class="homeFooterBox" style="margin-left: 0.2rem;">
 				<div class="footerTitle" style="margin-bottom: 1.1rem;"><h2><span>CS CENTER</span></h2></div>
 				<ul class="homeFooterUL">
@@ -143,7 +167,7 @@
 					<li class="footerContents">AM 09:00 ~ PM 17:00</li>
 				</ul>
 			</div>
-			<!-- 은행 정보영역 -->
+			<!-- 은행 -->
 			<div class="homeFooterBox" style="margin-left: 1rem;">
 				<div class="footerTitle" style="margin-top: 3rem;"><h2><span>BANK INFO</span></h2></div>
 				<ul class="homeFooterUL">
@@ -153,7 +177,7 @@
 					<li class="footerContents">예금주 : (주)케이몰</li>
 				</ul>
 			</div>
-			<!-- 정책 정보영역 -->
+			<!-- 정책 -->
 			<div class="homeFooterBox" style="margin-left: -0.5rem;">
 				<div class="footerTitle" style="margin-bottom: 1.3rem;"><h2><span>POLICY</span></h2></div>
 				<ul class="homeFooterUL">
@@ -163,7 +187,7 @@
 					<li class="footerContents"><a class="footerPolicyA" href="#">PRIVACY</a></li>
 				</ul>
 			</div>
-			<!-- 회사 정보영역 -->
+			<!-- 회사소개 -->
 			<div class="homeFooterBox">
 				<div class="footerTitle"><h2><span>COMPANY</span></h2></div>
 				<ul class="homeFooterUL">

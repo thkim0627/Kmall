@@ -5,21 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Kmall - 로그인</title>
-<!-- 0-1.favicon -->
+<!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="resources/favicon/favicon.ico"/>
-<!-- 0-2.css -->
+<!-- css -->
 <link rel="stylesheet" type="text/css" href="resources/css/home.css">
 <link rel="stylesheet" type="text/css" href="resources/css/login.css">
-<!-- 0-3.jqeury -->
-<script src="resources/myLib/jquery-3.2.1.min.js"></script>
+<!-- js -->
+<script src="resources/js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<header></header>
 
-	<!-- 네비게이션바 영역 -->
+	<!-- 네비게이션바 -->
 	<nav> 
 		<div id="navbarBox"> 
-	        <!-- 쇼핑메뉴 영역 -->
+	        <!-- 쇼핑메뉴 -->
 	        <div id="shopMenuBox">
 		        <ul id="shopMenu">
 					<c:if test="${empty LoginID || not empty LoginID}">
@@ -47,11 +47,11 @@
 					</c:if>
 				</ul>
 			</div>
-			<!-- 로고 영역 -->
+			<!-- 로고 -->
 	        <div id="navbarLogo">
 	            <h1><a href="home">Kmall</a></h1>
 	        </div>
-			<!-- 회원메뉴 영역 -->
+			<!-- 회원메뉴 -->
 	        <div id="memberMenuBox">
 		        <ul id="memberMenu">
 		        	<li>
@@ -76,22 +76,22 @@
 	    </div>
     </nav>
 	
-	<!-- 로그인 영역 -->
+	<!-- 로그인 -->
 	<main>
 		<div id="loginTableBox">
 			<form action="clientlogin" method="post">
 				<table>
-					<!-- 로그인 제목 영역 -->
+					<!-- 로그인 제목 -->
 					<caption id="loginTitle">LOGIN</caption>
-					<tr> <!-- 아이디 영역 -->
+					<tr> <!-- 아이디 -->
 					 	<td><input type="text" name="id" id="id" placeholder="ID"></td><br>
 					</tr>
-					<tr> <!-- 비밀번호 영역 -->
+					<tr> <!-- 비밀번호 -->
 						<td><input type="password" name="password1" id="password1" placeholder="PASSWORD"></td><br>
 					</tr>
 					<tr>	
 						<td>
-							<input type="submit" id="submit" value="LOGIN" onclick="return inCheck()"><br>
+							<input type="submit" id="submit" value="LOGIN"><br>
 							<input type="button" id="backBtn" value="CANCEL" onclick="location.href='home'">
 						</td>
 					</tr>
@@ -104,11 +104,11 @@
 		</div>
 	</main>
 	
-	<!-- 푸터 영역 -->
+	<!-- 푸터 -->
 	<footer>
 		<div id="homeFooterHR"></div>
 		<div id="homeFooterCont">
-			<!-- 고객센터 정보영역 -->
+			<!-- 고객센터 -->
 			<div class="homeFooterBox" style="margin-left: 0.2rem;">
 				<div class="footerTitle" style="margin-bottom: 1.1rem;"><h2><span>CS CENTER</span></h2></div>
 				<ul class="homeFooterUL">
@@ -117,7 +117,7 @@
 					<li class="footerContents">AM 09:00 ~ PM 17:00</li>
 				</ul>
 			</div>
-			<!-- 은행 정보영역 -->
+			<!-- 은행정보 -->
 			<div class="homeFooterBox" style="margin-left: 1rem;">
 				<div class="footerTitle" style="margin-top: 3rem;"><h2><span>BANK INFO</span></h2></div>
 				<ul class="homeFooterUL">
@@ -127,7 +127,7 @@
 					<li class="footerContents">예금주 : (주)케이몰</li>
 				</ul>
 			</div>
-			<!-- 정책 정보영역 -->
+			<!-- 정책정보 -->
 			<div class="homeFooterBox" style="margin-left: -0.5rem;">
 				<div class="footerTitle" style="margin-bottom: 1.3rem;"><h2><span>POLICY</span></h2></div>
 				<ul class="homeFooterUL">
@@ -137,7 +137,7 @@
 					<li class="footerContents"><a class="footerPolicyA" href="#">PRIVACY</a></li>
 				</ul>
 			</div>
-			<!-- 회사 정보영역 -->
+			<!-- 회사정보 -->
 			<div class="homeFooterBox">
 				<div class="footerTitle"><h2><span>COMPANY</span></h2></div>
 				<ul class="homeFooterUL">
