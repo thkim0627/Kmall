@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+#shopMenu, #memberMenu { margin-top: 1.4rem; }
+
+/* 마이페이지 */
+#clientPageTableBox{
+	display: flex;
+	justify-content: center;
+	margin-bottom: -3.5rem;
+}
+
+/* 제목 */
+#clientPageTitle {
+	display: flex;
+	justify-content: center;
+	margin: 5rem 0 2rem 0;
+	font-size: 2.5rem;
+}
+
+/* 내용 */
+.clientPageSubtitle .a1 {
+	display: flex;
+	justify-content: center;
+	color: black;
+	font-size: 0.8rem;
+	font-weight: normal;
+	text-decoration: none;
+	margin-bottom: -1.5rem;
+}
+
+.clientPageSubtitle .a2 {
+	display: flex;
+	justify-content: center;
+	color: #BABABA;
+	font-size: 0.7rem;
+	text-decoration: none;
+	margin-bottom: 4rem;
+}
+
+.clientPageSubtitle .a2:hover {
+	color: black;
+}

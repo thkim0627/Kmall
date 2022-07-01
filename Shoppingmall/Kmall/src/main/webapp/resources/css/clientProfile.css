@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+#shopMenu, #memberMenu { margin-top: 1.4rem; }
+
+/* 마이페이지 - 프로필 */
+/* 제목 */
+#ProfileTitle {
+	font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: -0.1rem;
+    text-align: left;
+    margin: 6rem 0 3rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid  rgba(220, 220, 220, 0.9);
+}
+
+/* 부제목 */
+#ProfileSubTitle {
+	font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    margin: 0 0 0.5rem 0;
+    border-bottom: 1px solid  rgba(220, 220, 220, 0.9);
+}
+
+/* 내용 */
+#profileTableBox {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 13.3rem;
+}
+
+#profileTableBox #profileTable { width: 50rem; }
+
+#profileTable td:not(.submitBox) {
+	border-bottom: 1px solid  rgba(220, 220, 220, 0.9);
+	padding-bottom: 0.8rem;
+}
+
+#profileTable label, input {
+	font-size: 0.7rem;
+    font-weight: normal;
+	margin: 0 0 0 1rem;
+}
+
+#profileTable input {
+	margin-right: 3rem;
+} 
+
+#id, #password1, #password2, #name {
+	border-color: rgba(240, 240, 240, 0);
+	background-color: rgba(240, 240, 240, 0.9);
+}
+
+#id:focus, #password1:focus, #password2:focus, #name:focus { outline: none; }
+
+#address { width: 20rem; }
+
+/* 회원정보 수정 */
+#submitUpdate {
+	position: absolute;
+	margin: 2rem 0 0 9.8rem;
+}
+
+/* 취소 */
+#backBtn {
+	position: absolute;
+	margin: 2rem 0 0 15.5rem;
+}
+
+/* 회원탈퇴 */
+#submitDelete {
+	position: absolute;
+	margin: 2rem 0 0 35.8rem;
+}
+#submitUpdate, #backBtn, #submitDelete {
+	color: white;
+	background-color: black;
+	font-size: 0.7rem;
+    font-weight: normal;
+	height: 2.2rem;
+}
+
+#submitUpdate:hover { width: 5.4rem; }
+#backBtn:hover { width: 2.4rem; }
+#submitDelete:hover { width: 3.8rem; }
+
+#submitUpdate:hover, #backBtn:hover, #submitDelete:hover {
+	color: black;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: rgba(0, 0, 0, 0.4);
+	transition: all 0.4s ease-in;
+	cursor: pointer;
+}
