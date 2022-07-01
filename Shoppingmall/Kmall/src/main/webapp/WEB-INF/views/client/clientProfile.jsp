@@ -1,19 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kmall - 회원가입</title>
+<title>Kmall - 프로필</title>
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="resources/favicon/favicon.ico"/>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="resources/css/home.css">
-<link rel="stylesheet" type="text/css" href="resources/css/join.css">
+<link rel="stylesheet" type="text/css" href="resources/css/clientProfile.css">
 <!-- js -->
 <script src="resources/js/jquery-3.2.1.min.js"></script>
-<script src="resources/js/join.js"></script>
-<script src="resources/js/regularExpression.js"></script>
 </head>
 <body>
 	<header></header>
@@ -77,78 +75,59 @@
 			</div>
 	    </div>
     </nav>
-
-	<!-- enctype="multipart/form-data"는 파일 업로드를 가능하게 해줌 
-	multipart/form-data는 파일업로드가 있는 입력양식요소에 사용되는 enctype 속성의 값중 하나이고, 
-	multipart는 폼데이터가 여러 부분으로 나뉘어 서버로 전송되는 것을 의미한다. 
-	폼이 제출될 때 이 형식을 서버에 알려주며, multipart/form-data로 지정이 되어 있어야 서버에서 정상적으로 데이터를 처리할 수 있다. -->
-	 
-	<!-- 회원가입 -->
+	
+	<!-- 프로필 -->
 	<main>
-		<div id="joinTableBox">
-			<form action="clientjoin" method="post">
-				<table>
+		<div id="profileTableBox">
+			<form action="clientupdate" method="post">
+				<table id="profileTable">
 					<!-- 제목 -->
-					<caption id="joinTitle">JOIN</caption>
+					<caption id="ProfileTitle">✶ 회원 정보 수정</caption>
+					<!-- 부제목 -->
+					<caption id="ProfileSubTitle">기본정보<span style="float: right; font-size: 0.8rem;">필수입력사항</span><span style="color: red; float: right; font-size: 0.8rem;">✔</span></caption>
 					<!-- 아이디 -->
-					<tr>
-				 		<td>
-				 			<input type="text" name="id" id="id" placeholder="ID">
-				 			<button type="button" id="idCheckBtn" onclick="idDoubleCheck()">DOUBLE CHECK</button><br>
-				 			<span id="iMessage" class="eMessage"></span>
-				 		</td>
+					<tr> <!-- input Tag 입력 막기 : disabled는 서버로 전송 안됨, readonly는 서버로 전송 됨 -->
+						<td><label for="id">아이디</label><span style="color: red; font-size: 0.8rem;">✔</span></td>
+						<td><input type="text" name="id" id="id" value="${client.id}" readonly></td>
 					</tr>
 					<!-- 비밀번호1 -->
 					<tr>
-						<td>
-							<input type="password" name="password1" id="password1" class="password" placeholder="PASSWORD"><br>
-							<span id="p1Message" class="eMessage"></span>
-						</td>
-						
+						<td><label for="password1">비밀번호</label><span style="color: red; font-size: 0.8rem;">✔</span></td>
+						<td><input type="text" name="password1" id="password1" value="${client.password1}" readonly></td>
 					</tr>
 					<!-- 비밀번호2 -->
 					<tr>
-						<td>
-							<input type="password" name="password2" id="password2" class="password" placeholder="RECONFIRM PASSWORD"><br>
-							<span id="p2Message" class="eMessage"></span>	
-						</td>
+						<td><label for="password2">비밀번호 확인</label><span style="color: red; font-size: 0.8rem;">✔</span></td>
+						<td><input type="text" name="password2" id="password2" value="${client.password1}" readonly></td>
 					</tr>
 					<!-- 이름 -->
 					<tr>
-				 		<td>
-				 			<input type="text" name="name" id="name" placeholder="NAME"><br>
-				 			<span id="nMessage" class="eMessage"></span>
-				 		</td>
+						<td><label for="name">이름</label><span style="color: red; font-size: 0.8rem;">✔</span></td>
+						<td><input type="text" name="name" id="name" value="${client.name}" readonly></td>
 					</tr>
 					<!-- 주소 -->
 					<tr>
-				 		<td>
-				 			<input type="text" name="address" id="address" placeholder="ADDRESS"><br>
-				 			<span id="aMessage" class="eMessage"></span>	
-				 		</td>
+						<td><label for="address">주소</label><span style="color: red">✔</span></td>
+						<td><input type="text" name="address" id="address" value="${client.address}"></td>
 					</tr>
 					<!-- 핸드폰번호 -->
 					<tr>
-				 		<td>
-				 			<input type="text" name="number" id="number" placeholder="PHONE NUMBER"><br>
-				 			<span id="hMessage" class="eMessage"></span>
-				 		</td>
+						<td><label for="number">휴대전화</label><span style="color: red; font-size: 0.8rem;">✔</span></td>
+						<td><input type="text" name="number" id="number" value="${client.number}"></td>
 					</tr>
 					<!-- 이메일 -->
 					<tr>
-				 		<td>
-				 			<input type="text" name="email" id="email" placeholder="EMAIL"><br>
-				 			<span id="eMessage" class="eMessage"></span>	
-				 		</td>	
+						<td><label for="email">이메일</label><span style="color: red; font-size: 0.8rem;">✔</span></td>
+						<td><input type="text" name="email" id="email" value="${client.email}"></td>
 					</tr>
-					
-					<!-- 폼 전송 -->
-					<tr>	
-						<td style="margin: -1rem;"><br>
-							<input type="submit" id="submit" value="SIGNUP" onclick="return inCheck()"><br>
-							<input type="reset" id="backBtn" value="CANCEL" onclick="location.href='home'">
+					<tr>
+						<td class="submitBox"></td>
+						<td class="submitBox">
+							<input type="submit" id="submitUpdate" value="회원정보 수정">
+							<input type="reset" id="backBtn" value="취소" onclick="location.href='home'">
+							<input type="button" id="submitDelete" value="회원탈퇴" onclick="location.href='clientdelete'">
 						</td>
-					</tr>	
+					</tr>
 				</table>
 			</form>
 		</div>
@@ -167,7 +146,7 @@
 					<li class="footerContents">AM 09:00 ~ PM 17:00</li>
 				</ul>
 			</div>
-			<!-- 은행 -->
+			<!-- 은행정보 -->
 			<div class="homeFooterBox" style="margin-left: 1rem;">
 				<div class="footerTitle" style="margin-top: 3rem;"><h2><span>BANK INFO</span></h2></div>
 				<ul class="homeFooterUL">
@@ -177,7 +156,7 @@
 					<li class="footerContents">예금주 : (주)케이몰</li>
 				</ul>
 			</div>
-			<!-- 정책 -->
+			<!-- 정책정보 -->
 			<div class="homeFooterBox" style="margin-left: -0.5rem;">
 				<div class="footerTitle" style="margin-bottom: 1.3rem;"><h2><span>POLICY</span></h2></div>
 				<ul class="homeFooterUL">
@@ -187,7 +166,7 @@
 					<li class="footerContents"><a class="footerPolicyA" href="#">PRIVACY</a></li>
 				</ul>
 			</div>
-			<!-- 회사소개 -->
+			<!-- 회사정보 -->
 			<div class="homeFooterBox">
 				<div class="footerTitle"><h2><span>COMPANY</span></h2></div>
 				<ul class="homeFooterUL">
