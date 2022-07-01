@@ -120,7 +120,7 @@ $(function(){
 	
 }); //ready
 
-// SINGUP 버튼을 눌렀을때 잘못 기입된 부분이 있으면 안내메세지 출력
+// SINGUP 버튼을 눌렀을때 잘못 기입된 부분이 없으면 안내메세지 출력
 function inCheck() {
 	if (iCheck == false) { $('#iMessage').html('필수 정보입니다.'); }
 	if (p1Check == false) { $('#p1Message').html('필수 정보입니다.'); }
@@ -130,10 +130,16 @@ function inCheck() {
 	if (hCheck == false) { $('#hMessage').html('필수 정보입니다.'); }
 	if (eCheck == false) { $('#eMessage').html('필수 정보입니다.'); }
 	
+	// SINGUP 버튼을 눌렀을때 잘못 기입된 부분이 있으면 안내메세지 출력
 	if (iCheck && p1Check && p2Check && nCheck && aCheck && hCheck && eCheck) {
-		if (confirm("정말 가입하시겠습니까?") == false) {
-			  alert('가입이 취소되었습니다.');
+		if (confirm("정말 가입하시겠습니까?") == true) {
+			  alert('회원가입이 완료되었습니다.');
+			  return true; 
+		} else if (confirm("정말 취소하시겠습니까?") == false) {
+			  alert('회원가입이 취소되었습니다.');
 			  return false; 
-		} else return true;
+		} else {
+			return true;
+		} 
 	} else return false;
 } //inCheck()
