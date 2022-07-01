@@ -71,7 +71,7 @@ public class ClientController {
 			mv.setViewName("client/clientLoginForm");
 			out.flush();
 		} 
-		// view
+		// View
 		return mv;
 	} // clientlogin
 	
@@ -98,7 +98,7 @@ public class ClientController {
 			mv.setViewName("client/clientJoinForm");
 		}
 		
-		// view
+		// View
 		return mv;
 	} // clientjoin
 	
@@ -120,5 +120,154 @@ public class ClientController {
 		mv.setViewName("client/idDoubleCheck");
 		return mv;
 	} // idDoubleCheck
+	
+	// 마이페이지
+	@RequestMapping(value = "/clientpage")
+	public ModelAndView clientPage(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, ClientVO vo) throws IOException {
+		// 한글처리
+		response.setContentType("text/html; charset=UTF-8");
+		
+		// 요청분석
+		HttpSession session = request.getSession(false);
+		PrintWriter out = response.getWriter();
+		
+		// Service
+		if (session != null && session.getAttribute("LoginID") != null) {
+			vo.setId((String) session.getAttribute("LoginID"));
+			vo = service.selectClientOne(vo);
+			
+			if (vo != null) {
+				// 마이페이지 성공
+				mv.setViewName("client/clientPage");
+			} else {
+				// 회원정보 읽어오는데 실패하면 로그인 유도
+				out.println("<script>alert('회원정보를 불러오는데 실패했습니다. 잠시후 다시 시도해주세요.');</script>");
+				mv.setViewName("client/clientLoginForm");
+				out.flush();
+			} 
+		} else {
+			// 로그인 정보가 없으면 없음을 알려주고 로그인 유도
+			out.println("<script>alert('요청하신 회원정보가 없습니다. 다시 확인해주세요.');</script>");
+			mv.setViewName("client/clientLoginForm");
+			out.flush();
+		} 
+		// View
+		return mv;
+	} // clientPage
+	
+	// 마이페이지 - 프로필
+	@RequestMapping(value = "/clientprofile")
+	public ModelAndView clientProfile(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, ClientVO vo) throws IOException {
+		// 한글처리
+		response.setContentType("text/html; charset=UTF-8");
+
+		// 요청분석
+		HttpSession session = request.getSession(false);
+		PrintWriter out = response.getWriter(); 
+		
+		// Service
+		if ( session!=null && session.getAttribute("LoginID")!=null ) {
+			vo.setId((String)session.getAttribute("LoginID"));
+			vo = service.selectClientOne(vo);
+			
+			if ( vo!=null ) { 
+				// 마이페이지 프로필 성공
+				request.setAttribute("client", vo);
+				// Detail & Update 확인 
+				if ( request.getParameter("jcode")!=null && request.getParameter("jcode").equals("U") )  
+					 mv.setViewName("#");
+				else mv.setViewName("client/clientProfile");
+				
+			}else {
+				// 회원정보 읽어오는데 실패하면 로그인 유도
+				out.println("<script>alert('회원정보를 불러오는데 실패했습니다. 잠시후 다시 시도해주세요.');</script>");
+				mv.setViewName("client/clientLoginForm");
+				out.flush();
+			} 
+		}else {
+			// 로그인 정보가 없으면 없음을 알려주고 로그인 유도
+			out.println("<script>alert('요청하신 회원정보가 없습니다. 다시 확인해주세요.');</script>");
+			mv.setViewName("client/clientLoginForm");
+			out.flush();
+		} 
+		// View
+		return mv;
+	} // clientProfile
+	
+	// 마이페이지 - 프로필 - 회원정보 수정
+	@RequestMapping(value = "/clientupdate", method = RequestMethod.POST)
+	public ModelAndView profileUpdate(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, ClientVO vo) throws IOException {
+		// 한글처리
+		response.setContentType("text/html; charset=UTF-8");
+
+		// 요청분석
+		PrintWriter out = response.getWriter();
+
+		// Service
+		mv.addObject("client", vo);
+
+		if (service.updateClient(vo) > 0) {
+			// 회원정보 수정 성공
+			request.getSession().setAttribute("LoginName", vo.getName());
+			out.println("<script>alert('회원정보가 수정되었습니다.');</script>");
+			mv.setViewName("client/clientProfile");
+			out.flush();
+		} else {
+			// 회원정보 수정 실패
+			out.println("<script>alert('회원정보가 수정되지 않았습니다.');</script>");
+			mv.setViewName("client/clientProfile");
+			out.flush();
+		}
+		// View 
+		return mv;
+	} // profileUpdate
+	
+	// 회원정보 삭제
+	@RequestMapping(value = "/clientdelete")
+	public ModelAndView profileDelete(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, ClientVO vo, 
+			RedirectAttributes rttr) throws IOException {
+		// 한글처리
+		response.setContentType("text/html; charset=UTF-8");
+		
+		// 요청분석 & Service
+		HttpSession session = request.getSession(false);
+		
+		if (session != null && session.getAttribute("LoginID") != null) {
+			// 삭제 가능
+			vo.setId((String) session.getAttribute("LoginID"));
+			if (service.deleteClient(vo) > 0) {
+				// 삭제 성공
+				rttr.addFlashAttribute("msg", "회원탈퇴가 성공적으로 완료되었습니다.");
+				session.invalidate();
+			} else {
+				// 삭제 실패
+				rttr.addFlashAttribute("msg", "회원탈퇴 실패했습니다. 잠시후 다시해주세요.");
+			}
+		} else {
+			// 삭제 불가능
+			rttr.addFlashAttribute("msg", "회원탈퇴 실패했습니다. 잠시후 다시해주세요.");
+		}
+
+		// View
+		mv.setViewName("redirect:profileDelMsg");
+		return mv;
+	} // profileDelete
+	
+	@RequestMapping(value = "/profileDelMsg", method = RequestMethod.GET)
+	public ModelAndView profileDelMsg(HttpServletResponse response, ModelAndView mv) throws IOException {
+		// 한글처리
+		response.setContentType("text/html; charset=UTF-8");
+		
+		// 요청분석
+		PrintWriter out = response.getWriter();
+		
+		// Service
+		out.println("<script>alert('회원탈퇴가 완료되었습니다.'); </script>");
+		out.flush();
+		
+		// View
+		mv.setViewName("home");
+		return mv;
+	} // profileDelMsg
 	
 } // ClientController
