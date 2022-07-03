@@ -121,6 +121,17 @@ public class ClientController {
 		return mv;
 	} // idDoubleCheck
 	
+	// 로그아웃
+	@RequestMapping(value = "/clientlogout")
+	public ModelAndView clientlogout(HttpServletRequest request, ModelAndView mv, RedirectAttributes rttr) {
+		// session 무효화
+		request.getSession().invalidate();
+
+		// View
+		mv.setViewName("redirect:home");
+		return mv;
+	} // clientlogout
+	
 	// 마이페이지
 	@RequestMapping(value = "/clientpage")
 	public ModelAndView clientPage(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, ClientVO vo) throws IOException {
