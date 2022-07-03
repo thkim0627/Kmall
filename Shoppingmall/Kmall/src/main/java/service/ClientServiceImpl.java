@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import mapperInterface.ClientMapper;
 import vo.ClientVO;
-import vo.MemberVO;
 
 // Service
 // 요청클래스와 DAO클래스 사이의 연결(완충지대) 역할
