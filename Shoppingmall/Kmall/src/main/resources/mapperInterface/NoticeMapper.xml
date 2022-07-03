@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapperInterface.NoticeMapper" >
+
+	<!-- 공지사항 -->
+	<!-- 조회 -->
+	<select id="noticeList" resultType="vo.NoticeVO">
+		select * from notice order by seq desc
+	</select>
+	
+	<!-- 조회 - 페이징 -->
+	
+	<!-- 상세보기 -->
+	<select id="noticeOne" resultType="vo.NoticeVO" >
+		<!-- #{seq}는 parameter로 전달된 vo의 seq라는 컬럼의 value가 전달됨, getSeq()로 처리함	-->
+		select * from notice where seq=#{seq}
+	</select>
+	
+	<!-- 상세보기 - 조회수 -->
+	<update id="countUp">
+		update notice set cnt=cnt+1 where seq=#{seq}
+	</update>
+
+	<!-- 작성 -->
+	<insert id="noticeInsert">
+		insert into notice(title,id,content) values(#{title},#{id},#{content})
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="noticeUpdate">
+		update notice set title=#{title}, content=#{content} where seq=#{seq}
+	</update>
+
+	<!-- 삭제 -->
+	<delete id="noticeDelete">
+		delete from notice where seq=#{seq}
+	</delete>
+
+</mapper>  
