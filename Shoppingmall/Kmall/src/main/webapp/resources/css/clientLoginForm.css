@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+#shopMenu, #memberMenu { margin-top: 1.4rem; }
+
+/* 로그인 제목 영역 */
+#loginTitle {
+	font-size: 0.8rem;
+    font-weight: normal;
+    text-align: left;
+    margin: 6.7rem 0 0.5rem 0.2rem;
+}
+
+/* 로그인 영역 */
+#loginTableBox {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 19.7rem;
+}
+
+/* 로그인 내용 스타일 */
+#id, #password1 {
+	font-size: 0.7rem;
+	font-weight: normal;
+	width: 23.5rem;
+	height: 2rem;
+	margin-bottom: 0.3rem;
+	border: 1px solid  rgba(210, 210, 210, 0.8);
+}
+
+#password1 { margin-bottom: 1rem; }
+
+/* 로그인 기능 스타일 */
+#submit, #backBtn {
+	color: white;
+	background-color: black;
+	font-size: 0.8rem;
+    font-weight: normal;
+	width: 23.8rem;
+	height: 2.2rem;
+	margin: 0 0 0.3rem 0;
+}
+
+#submit:hover, #backBtn:hover {
+	color: black;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: rgba(0, 0, 0, 0.4);
+	transition: all 0.4s ease-in;
+	cursor: pointer;
+}
+
+#findIDPWD {
+	margin: 0 14.2rem 0 0;
+	color: gray;
+	font-size: 0.7rem;
+    font-weight: normal;
+	text-decoration: none;
+		
+}
+
+#findIDPWD:hover {
+	border-bottom: solid 1px gray;
+}

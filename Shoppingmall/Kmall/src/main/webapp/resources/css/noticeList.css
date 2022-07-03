@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+#shopMenu, #memberMenu { margin-top: 1.4rem; }
+
+/* 공지사항 */
+/* 제목 */
+#noticeTitle {
+	font-size: 1.5rem;
+    text-align: left;
+    margin: 5rem 0 1rem 0;
+}
+
+/* 내용 */
+#noticeTableBox {
+  width: 90%;
+  font-size: 0.8rem;
+  border-collapse: collapse;
+  margin-left: 5.2rem;
+  overflow: hidden;
+}
+
+thead { 
+	font-weight: normal;
+	color: white;
+	background-color: black;
+}
+
+th, td { 
+	text-align: center; 
+	padding: 0.5rem 0rem; 
+	vertical-align: middle; 
+}
+
+td:not(#none) { 
+	max-width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.no { width: 5rem; }
+.title { width: 20rem; }
+/* .contents { width: 25rem; } */
+.writer { width: 7rem; }
+.createddate { width: 7rem; }
+.views { width: 7rem; }
+
+.title a {
+	color: black;
+	text-decoration: none;
+}
+
+.title a:hover {
+	color: gray;
+}
+
+#writingBtn {
+	width: 6rem;
+	height: 2.2rem;
+	line-height: 2.2rem;
+	color: white;
+	background-color: black;
+	font-size: 1rem;
+    font-weight: normal;
+    text-decoration: none;
+	position: absolute;
+	border: none;
+	margin-left: 74.8rem;
+}
+
+#writingBtn:hover {
+	color: black;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: rgba(0, 0, 0, 0.4);
+	transition: all 0.4s ease-in;
+	cursor: pointer;	
+}
