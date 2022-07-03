@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kmall - 로그인</title>
+<title>Kmall - 공지사항</title>
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="resources/favicon/favicon.ico"/>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="resources/css/home.css">
-<link rel="stylesheet" type="text/css" href="resources/css/clientLoginForm.css">
+<link rel="stylesheet" type="text/css" href="resources/css/noticeDetail.css">
 <!-- js -->
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 </head>
@@ -76,32 +76,46 @@
 	    </div>
     </nav>
 	
-	<!-- 로그인 -->
+	<!-- 공지사항 - 상세보기 -->
 	<main>
-		<div id="loginTableBox">
-			<form action="clientlogin" method="post">
-				<table>
-					<!-- 로그인 제목 -->
-					<caption id="loginTitle">LOGIN</caption>
-					<tr> <!-- 아이디 -->
-					 	<td><input type="text" name="id" id="id" placeholder="ID"></td><br>
-					</tr>
-					<tr> <!-- 비밀번호 -->
-						<td><input type="password" name="password1" id="password1" placeholder="PASSWORD"></td><br>
-					</tr>
-					<tr>	
-						<td>
-							<input type="submit" id="submit" value="LOGIN"><br>
-							<input type="button" id="backBtn" value="CANCEL" onclick="location.href='home'">
-						</td>
-					</tr>
-					<tr>
-						<td><a href="#" id="findIDPWD">＊FIND ID AND PASSWORD＊</a></td>
-					</tr>	
-					<!-- 하단영역 네이버&카카오 로그인 api 구현희망 -->
-				</table>
-			</form>
-		</div>
+		<table id="noticeTableBox">
+			<caption id="noticeTitle">NOTICE</caption>
+			<thead>
+				<!-- 제목 -->
+				<tr>
+					<th>TITLE</th>
+					<td colspan="3">&nbsp;${noticeDetail.title}</td>
+				</tr>
+				<!-- 작성자 -->
+				<tr>
+					<th>WRITER</th>
+					<td colspan="3">&nbsp;${noticeDetail.id}</td>
+				</tr>
+				<tr>
+					<!-- 작성일자 -->
+					<th>CERATED DATE</th>
+					<td>&nbsp;${noticeDetail.regdate}</td>
+					<!-- 조회수 -->
+					<th>VIEWS</th>
+					<td>&nbsp;${noticeDetail.cnt}</td>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 내용 -->
+				<tr>
+					<td colspan="4"><p>${noticeDetail.content}</p></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<a href="noticelist" id="listBtn">LIST</a>
+			<div id="btnBox">
+				<!-- 로그인 후 내가 쓴글이면 수정, 삭제 가능 -->
+				<c:if test="${LoginID==noticeDetail.id}">
+					<a href="noticeupdatef?seq=${noticeDetail.seq}" id="updateBtn">UPDATE</a>
+					<a href="noticedelete?seq=${noticeDetail.seq}" id="deleteBtn">DELETE</a>
+				</c:if>
+			</div>
 	</main>
 	
 	<!-- 푸터 -->

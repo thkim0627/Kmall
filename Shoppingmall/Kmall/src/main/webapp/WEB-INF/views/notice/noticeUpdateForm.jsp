@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kmall - 로그인</title>
+<title>Kmall - 공지사항</title>
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="resources/favicon/favicon.ico"/>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="resources/css/home.css">
-<link rel="stylesheet" type="text/css" href="resources/css/clientLoginForm.css">
+<link rel="stylesheet" type="text/css" href="resources/css/noticeUpdateForm.css">
 <!-- js -->
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 </head>
@@ -76,32 +76,49 @@
 	    </div>
     </nav>
 	
-	<!-- 로그인 -->
+	<!-- 공지사항 - 수정 -->
 	<main>
-		<div id="loginTableBox">
-			<form action="clientlogin" method="post">
-				<table>
-					<!-- 로그인 제목 -->
-					<caption id="loginTitle">LOGIN</caption>
-					<tr> <!-- 아이디 -->
-					 	<td><input type="text" name="id" id="id" placeholder="ID"></td><br>
+		<form action="noticeupdate" method="post">
+			<table id="noticeTableBox">
+				<caption id="noticeTitle">NOTICE</caption>
+				<thead>
+					<!-- 순번 -->
+					<input type="hidden" name="seq" value="${noticeUpdate.seq}" readonly>
+					<!-- 제목 -->
+					<tr>
+						<th>TITLE</th>
+						<td colspan="3">&nbsp;<input type="text" name="title" value="${noticeUpdate.title}"></td>
 					</tr>
-					<tr> <!-- 비밀번호 -->
-						<td><input type="password" name="password1" id="password1" placeholder="PASSWORD"></td><br>
-					</tr>
-					<tr>	
-						<td>
-							<input type="submit" id="submit" value="LOGIN"><br>
-							<input type="button" id="backBtn" value="CANCEL" onclick="location.href='home'">
-						</td>
+					<!-- 작성자 -->
+					<tr>
+						<th>WRITER</th>
+						<td colspan="3">&nbsp;${LoginID}</td>
 					</tr>
 					<tr>
-						<td><a href="#" id="findIDPWD">＊FIND ID AND PASSWORD＊</a></td>
-					</tr>	
-					<!-- 하단영역 네이버&카카오 로그인 api 구현희망 -->
-				</table>
-			</form>
-		</div>
+						<!-- 작성일자 -->
+						<th>CERATED DATE</th>
+						<td>&nbsp;${noticeUpdate.regdate}</td>
+						<!-- 조회수 -->
+						<th>VIEWS</th>
+						<td>&nbsp;${noticeUpdate.cnt}</td>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- 내용 -->
+					<tr>
+						<td colspan="4"><textarea name="content" rows="25rem;" cols="186.4rem;">${noticeUpdate.content}</textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<input type="submit" id="listBtn" value="LIST" onclick="location.href='noticelist'">
+			<div id="btnBox">
+				<c:if test="${LoginID==noticeUpdate.id}">
+					<input type="submit" id="updateBtn" value="UPDATE">
+					<input type="reset" id="backBtn" value="CANCEL" onclick="location.href='noticedetail?seq=${noticeUpdate.seq}'">
+				</c:if>
+			</div>
+		</form>
 	</main>
 	
 	<!-- 푸터 -->

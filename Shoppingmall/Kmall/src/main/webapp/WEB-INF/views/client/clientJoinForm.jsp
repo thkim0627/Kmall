@@ -9,7 +9,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="resources/favicon/favicon.ico"/>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="resources/css/home.css">
-<link rel="stylesheet" type="text/css" href="resources/css/join.css">
+<link rel="stylesheet" type="text/css" href="resources/css/clientJoinForm.css">
 <!-- js -->
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <script src="resources/js/join.js"></script>
@@ -61,14 +61,14 @@
 						<c:if test="${empty LoginID}">
 							<li><a href="clientloginf">LOGIN</a></li>
 							<li><a href="clientjoinf">JOIN</a></li>
-							<li><a href="blist">NOTICE</a></li>
+							<li><a href="noticelist">NOTICE</a></li>
 							<li><a href="#">SEARCH</a></li>
 						</c:if>
 						<!-- 로그인 후 표시 메뉴-->
 						<c:if test="${not empty LoginID}">
-							<li><a href="logout">LOGOUT</a></li>
+							<li><a href="clientlogout">LOGOUT</a></li>
 							<li><a href="#">CART</a></li>
-							<li><a href="blist">NOTICE</a></li>
+							<li><a href="noticelist">NOTICE</a></li>
 							<li><a href="#">SEARCH</a></li>
 							<li><a href="clientpage">${LoginName}님</a></li>
 						</c:if>

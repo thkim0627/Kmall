@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kmall - 로그인</title>
+<title>Kmall - 공지사항</title>
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="resources/favicon/favicon.ico"/>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="resources/css/home.css">
-<link rel="stylesheet" type="text/css" href="resources/css/clientLoginForm.css">
+<link rel="stylesheet" type="text/css" href="resources/css/noticeList.css">
 <!-- js -->
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 </head>
@@ -76,32 +76,41 @@
 	    </div>
     </nav>
 	
-	<!-- 로그인 -->
+	<!-- 공지사항 -->
 	<main>
-		<div id="loginTableBox">
-			<form action="clientlogin" method="post">
-				<table>
-					<!-- 로그인 제목 -->
-					<caption id="loginTitle">LOGIN</caption>
-					<tr> <!-- 아이디 -->
-					 	<td><input type="text" name="id" id="id" placeholder="ID"></td><br>
-					</tr>
-					<tr> <!-- 비밀번호 -->
-						<td><input type="password" name="password1" id="password1" placeholder="PASSWORD"></td><br>
-					</tr>
-					<tr>	
-						<td>
-							<input type="submit" id="submit" value="LOGIN"><br>
-							<input type="button" id="backBtn" value="CANCEL" onclick="location.href='home'">
-						</td>
-					</tr>
-					<tr>
-						<td><a href="#" id="findIDPWD">＊FIND ID AND PASSWORD＊</a></td>
-					</tr>	
-					<!-- 하단영역 네이버&카카오 로그인 api 구현희망 -->
-				</table>
-			</form>
-		</div>
+		<table id="noticeTableBox">
+			<!-- 제목 -->
+			<caption id="noticeTitle">NOTICE</caption>
+			<!-- 부제목 -->
+			<thead>
+				<tr>
+					<th class="no">NO</th>
+					<th class="title">TITLE</th>
+<!-- 					<th class="contents">CONTENT</th> -->
+					<th class="writer">WRITER</th>
+					<th class="createddate">CERATED DATE</th>
+					<th class="views">VIEWS</th>
+				</tr>
+			</thead>
+			<!-- 내용 -->
+			<tbody>
+				<c:if test="${not empty notice}">
+					<c:forEach var="notice" items="${notice}">
+						<tr>
+							<td class="no">${notice.seq}</td>
+							<td class="title"><a href="noticedetail?seq=${notice.seq}">${notice.title}</a></td>
+<%-- 							<td class="contents"><a href="noticedetail?seq=${notice.seq}">${notice.content}</a></td> --%>
+							<td class="writer">${notice.id}</td>
+							<td class="createddate">${notice.regdate}</td>
+							<td class="views">${notice.cnt}</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+				<c:if test="${not empty LoginID}">
+					<td id="none"><a href="noticeinsertf" id="writingBtn">WRITING</a></td>
+				</c:if>
+			</tbody>
+		</table>
 	</main>
 	
 	<!-- 푸터 -->

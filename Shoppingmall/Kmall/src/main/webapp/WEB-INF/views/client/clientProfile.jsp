@@ -59,14 +59,14 @@
 						<c:if test="${empty LoginID}">
 							<li><a href="clientloginf">LOGIN</a></li>
 							<li><a href="clientjoinf">JOIN</a></li>
-							<li><a href="blist">NOTICE</a></li>
+							<li><a href="noticelist">NOTICE</a></li>
 							<li><a href="#">SEARCH</a></li>
 						</c:if>
 						<!-- 로그인 후 표시 메뉴-->
 						<c:if test="${not empty LoginID}">
-							<li><a href="logout">LOGOUT</a></li>
+							<li><a href="clientlogout">LOGOUT</a></li>
 							<li><a href="#">CART</a></li>
-							<li><a href="blist">NOTICE</a></li>
+							<li><a href="noticelist">NOTICE</a></li>
 							<li><a href="#">SEARCH</a></li>
 							<li><a href="clientpage">${LoginName}님</a></li>
 						</c:if>
