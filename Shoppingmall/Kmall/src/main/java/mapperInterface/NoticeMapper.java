@@ -2,6 +2,7 @@ package mapperInterface;
 
 import java.util.List;
 
+import criteria.Criteria;
 import vo.NoticeVO;
 
 public interface NoticeMapper {
@@ -11,6 +12,10 @@ public interface NoticeMapper {
 	List<NoticeVO> noticeList();
 	
 	// 조회 - 페이징
+	List<NoticeVO> noticeListPaging(Criteria cri);
+	
+	// 게시물 총 페이지수
+	public int noticeTotal();
 	
 	// 상세보기 
 	NoticeVO noticeOne(NoticeVO vo);
