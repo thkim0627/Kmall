@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+#shopMenu, #memberMenu { margin-top: 1rem; }
+
+/* 검색 제목 */
+#searchTitle {
+	font-size: 0.8rem;
+    font-weight: normal;
+    text-align: left;
+    margin: 15rem 0 0.5rem 0.2rem;
+}
+
+/* 검색 폼 */
+#searchTableBox {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 19.7rem;
+}
+
+/* 검색창 */
+#search {
+	font-size: 0.7rem;
+	font-weight: normal;
+	width: 23.5rem;
+	height: 2rem;
+	margin-bottom: 0.3rem;
+	border: 1px solid  rgba(210, 210, 210, 0.8);
+}
+
+/* 검색 버튼 */
+#submit, #backBtn {
+	color: white;
+	background-color: black;
+	font-size: 0.8rem;
+    font-weight: normal;
+	width: 11.55rem;
+	height: 2.2rem;
+	margin-bottom: 0.2rem;
+}
+
+#submit:hover, #backBtn:hover {
+	color: black;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: rgba(0, 0, 0, 0.4);
+	transition: all 0.4s ease-in;
+	cursor: pointer;
+}

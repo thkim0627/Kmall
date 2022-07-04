@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+#shopMenu, #memberMenu { margin-top: 1rem; }
+
+#myBox { text-align: center; }
+
+#my {
+	margin: 10rem 1rem 0 0;
+	width: 15rem;
+	height: 14rem;
+	border-radius: 50%;
+}
+
+#myContent {
+	line-height: 3rem;
+	margin: 2rem 1rem 5.8rem 0;
+}

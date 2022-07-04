@@ -77,3 +77,28 @@ td:not(#none) {
 	transition: all 0.4s ease-in;
 	cursor: pointer;	
 }
+
+/* 조회 - 페이징 */
+.pageInfo {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	margin: 3rem 3.5rem 7.3rem 0;
+}
+
+.pageInfo li {
+	float: left;
+	font-size: 1rem;
+	margin-left: 1rem;
+	padding: 0.5rem;
+	font-weight: 500;
+}
+
+.pageInfo a {
+	color: black;
+	text-decoration: none;
+}
+
+.pageInfo a:hover {
+	color: gray;
+}
