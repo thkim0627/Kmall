@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import criteria.Criteria;
+import criteria.PageMaker;
 import service.NoticeService;
 import vo.NoticeVO;
 
@@ -23,16 +25,27 @@ public class NoticeController {
 	
 	// 공지사항 
 	// 조회
+//	@RequestMapping(value = "/noticelist", method=RequestMethod.GET)
+//	public ModelAndView noticelist(ModelAndView mv) {
+//		// 요청분석 & Service
+//		mv.addObject("notice", service.noticeList());
+//		// View
+//		mv.setViewName("notice/noticeList");
+//		return mv;
+//	} // noticelist
+	
+	// 조회 - 페이징
 	@RequestMapping(value = "/noticelist", method=RequestMethod.GET)
-	public ModelAndView noticelist(ModelAndView mv) {
+	public ModelAndView noticelist(ModelAndView mv, Criteria cri) {
 		// 요청분석 & Service
-		mv.addObject("notice", service.noticeList());
+		mv.addObject("notice", service.noticeListPaging(cri));
+		int total = service.noticeTotal();
+		PageMaker pageMake  = new PageMaker(cri, total);
+		mv.addObject("pageMaker", pageMake);
 		// View
 		mv.setViewName("notice/noticeList");
 		return mv;
 	} // noticelist
-	
-	// 조회 - 페이징
 	
 	// 상세보기 - 조회수
 	@RequestMapping(value = "/noticedetail", method=RequestMethod.GET)
