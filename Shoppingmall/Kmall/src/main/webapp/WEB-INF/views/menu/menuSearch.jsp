@@ -3,12 +3,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kmall - 연락</title>
+<title>Kmall - 검색</title>
 <!-- favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="resources/favicon/favicon.ico"/>
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="resources/css/home.css">
-<link rel="stylesheet" type="text/css" href="resources/css/menuContact.css">
+<link rel="stylesheet" type="text/css" href="resources/css/menuSearch.css">
 <!-- js -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -59,7 +59,7 @@
 							<li><a href="clientloginf">LOGIN</a></li>
 							<li><a href="clientjoinf">JOIN</a></li>
 							<li><a href="noticelist">NOTICE</a></li>
-							<li><a href="menusearch">SEARCH</a></li>
+							<li><a href="#">SEARCH</a></li>
 						</c:if>
 						<!-- 로그인 후 표시 메뉴-->
 						<c:if test="${not empty LoginID}">
@@ -77,15 +77,23 @@
 	
 	<!-- 검색 폼 -->
 	<main>
-		<div id="myBox">
-			<img id="my" src="resources/img/my.jpg">
-			
-			<div id="myContent">
-				<span>👨‍🎓 김태형</span><br>
-				<span>📞 010-5840-5084</span>&nbsp;<br>
-				<span>📧 thkim_o@daum.net</span><br>
-				<span>🏠 서울특별시 강동구 천호대로185길 67-5 203호</span>
-			</div>
+		<div id="searchTableBox">
+			<form action="#" method="get">
+				<table>
+					<!-- 제목 -->
+					<caption id="searchTitle">SEARCH</caption>
+					<!-- 검색창 -->
+					<tr> 
+					 	<td><input type="text" name="#" id="search" placeholder="검색어를 입력하세요."></td><br>
+					</tr>
+					<tr>	
+						<td>
+							<input type="submit" id="submit" value="SEARCH">
+							<input type="button" id="backBtn" value="CANCEL" onclick="location.href='home'">
+						</td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</main>
 	
