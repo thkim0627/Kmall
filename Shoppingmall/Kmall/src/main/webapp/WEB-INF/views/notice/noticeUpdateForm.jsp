@@ -40,10 +40,10 @@
 								<li><a href="#">ETC</a></li>	
 							</ul>
 						</li>			
-						<li><a href="#">SALE</a></li>
-						<li><a href="#">LOOKBOOK</a></li>
-						<li><a href="#">CAMPAIGN</a></li>
-						<li><a href="#">CONTACT</a></li>
+							<li><a href="#">SALE</a></li>
+							<li><a href="#">EVENT</a></li>
+							<li><a href="#">MAGAZINE</a></li>
+							<li><a href="menucontact">CONTACT</a></li>
 					</c:if>
 				</ul>
 			</div>
@@ -60,14 +60,14 @@
 							<li><a href="clientloginf">LOGIN</a></li>
 							<li><a href="clientjoinf">JOIN</a></li>
 							<li><a href="noticelist">NOTICE</a></li>
-							<li><a href="#">SEARCH</a></li>
+							<li><a href="menusearch">SEARCH</a></li>
 						</c:if>
 						<!-- 로그인 후 표시 메뉴-->
 						<c:if test="${not empty LoginID}">
 							<li><a href="clientlogout">LOGOUT</a></li>
 							<li><a href="#">CART</a></li>
 							<li><a href="noticelist">NOTICE</a></li>
-							<li><a href="#">SEARCH</a></li>
+							<li><a href="menusearch">SEARCH</a></li>
 							<li><a href="clientpage">${LoginName}님</a></li>
 						</c:if>
 					</li>
@@ -83,7 +83,7 @@
 				<caption id="noticeTitle">NOTICE</caption>
 				<thead>
 					<!-- 순번 -->
-					<input type="hidden" name="seq" value="${noticeUpdate.seq}" readonly>
+					<input type="hidden" name="seq" value="${noticeUpdate.seq}">
 					<!-- 제목 -->
 					<tr>
 						<th>TITLE</th>
@@ -98,6 +98,7 @@
 						<!-- 작성일자 -->
 						<th>CERATED DATE</th>
 						<td>&nbsp;${noticeUpdate.regdate}</td>
+						<input type="hidden" name="regdate" value="${noticeUpdate.regdate}">
 						<!-- 조회수 -->
 						<th>VIEWS</th>
 						<td>&nbsp;${noticeUpdate.cnt}</td>

@@ -40,10 +40,10 @@
 								<li><a href="#">ETC</a></li>	
 							</ul>
 						</li>			
-						<li><a href="#">SALE</a></li>
-						<li><a href="#">LOOKBOOK</a></li>
-						<li><a href="#">CAMPAIGN</a></li>
-						<li><a href="#">CONTACT</a></li>
+							<li><a href="#">SALE</a></li>
+							<li><a href="#">EVENT</a></li>
+							<li><a href="#">MAGAZINE</a></li>
+							<li><a href="menucontact">CONTACT</a></li>
 					</c:if>
 				</ul>
 			</div>
@@ -60,14 +60,14 @@
 							<li><a href="clientloginf">LOGIN</a></li>
 							<li><a href="clientjoinf">JOIN</a></li>
 							<li><a href="noticelist">NOTICE</a></li>
-							<li><a href="#">SEARCH</a></li>
+							<li><a href="menusearch">SEARCH</a></li>
 						</c:if>
 						<!-- 로그인 후 표시 메뉴-->
 						<c:if test="${not empty LoginID}">
 							<li><a href="clientlogout">LOGOUT</a></li>
 							<li><a href="#">CART</a></li>
 							<li><a href="noticelist">NOTICE</a></li>
-							<li><a href="#">SEARCH</a></li>
+							<li><a href="menusearch">SEARCH</a></li>
 							<li><a href="clientpage">${LoginName}님</a></li>
 						</c:if>
 					</li>
@@ -106,11 +106,48 @@
 						</tr>
 					</c:forEach>
 				</c:if>
-				<c:if test="${not empty LoginID}">
+				<!-- NOTICE에서 관리자인 경움만 글쓰기 가능 -->
+				<c:if test="${LoginID=='admin'}">
 					<td id="none"><a href="noticeinsertf" id="writingBtn">WRITING</a></td>
 				</c:if>
 			</tbody>
 		</table>
+		<!-- 조회 - 페이징 -->
+		<div class="pageInfo_wrap" id="pageInfo_wrap">
+			<div class="pageInfo_area">
+				<ul id="pageInfo" class="pageInfo">
+					<!-- 이전페이지 버튼 -->
+					<c:if test="${pageMaker.prev}">
+						<li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">◀</a></li>
+					</c:if>
+					<!-- 각 번호 페이지 버튼 -->
+					<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+						<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a href="${num}">${num}</a></li>
+					</c:forEach>
+					<!-- 다음페이지 버튼 -->
+					<c:if test="${pageMaker.next}">
+						<li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1}">▶</a></li>
+					</c:if>
+				</ul>
+			</div>
+		</div>
+
+		<form id="moveForm" method="get">
+			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+		</form>
+		
+		<script>
+			let moveForm = $("#moveForm");
+
+			$(".pageInfo a").on("click", function(e){
+		        e.preventDefault();
+		        moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+		        moveForm.attr("action", "noticelist");
+		        moveForm.submit();
+		        
+		    });
+		</script>
 	</main>
 	
 	<!-- 푸터 -->

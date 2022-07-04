@@ -40,10 +40,10 @@
 								<li><a href="#">ETC</a></li>	
 							</ul>
 						</li>			
-						<li><a href="#">SALE</a></li>
-						<li><a href="#">LOOKBOOK</a></li>
-						<li><a href="#">CAMPAIGN</a></li>
-						<li><a href="#">CONTACT</a></li>
+							<li><a href="#">SALE</a></li>
+							<li><a href="#">EVENT</a></li>
+							<li><a href="#">MAGAZINE</a></li>
+							<li><a href="menucontact">CONTACT</a></li>
 					</c:if>
 				</ul>
 			</div>
@@ -60,14 +60,14 @@
 							<li><a href="clientloginf">LOGIN</a></li>
 							<li><a href="clientjoinf">JOIN</a></li>
 							<li><a href="noticelist">NOTICE</a></li>
-							<li><a href="#">SEARCH</a></li>
+							<li><a href="menusearch">SEARCH</a></li>
 						</c:if>
 						<!-- 로그인 후 표시 메뉴-->
 						<c:if test="${not empty LoginID}">
 							<li><a href="clientlogout">LOGOUT</a></li>
 							<li><a href="#">CART</a></li>
 							<li><a href="noticelist">NOTICE</a></li>
-							<li><a href="#">SEARCH</a></li>
+							<li><a href="menusearch">SEARCH</a></li>
 							<li><a href="clientpage">${LoginName}님</a></li>
 						</c:if>
 					</li>
@@ -111,7 +111,7 @@
 		<a href="noticelist" id="listBtn">LIST</a>
 			<div id="btnBox">
 				<!-- 로그인 후 내가 쓴글이면 수정, 삭제 가능 -->
-				<c:if test="${LoginID==noticeDetail.id}">
+				<c:if test="${LoginID=='admin'}">
 					<a href="noticeupdatef?seq=${noticeDetail.seq}" id="updateBtn">UPDATE</a>
 					<a href="noticedelete?seq=${noticeDetail.seq}" id="deleteBtn">DELETE</a>
 				</c:if>
