@@ -11,6 +11,18 @@
 	</select>
 	
 	<!-- 조회 - 페이징 -->
+    <select id="noticeListPaging" resultType="vo.NoticeVO">
+        select * from (
+                select seq, title, id, content, regdate, cnt
+                from notice order by seq desc) as T1 
+        <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+        limit #{skip},#{amount}
+    </select>
+    
+    <!-- 게시물 총 페이지수 -->
+	<select id="noticeTotal" resultType="int">
+        select count(*) from notice
+    </select>
 	
 	<!-- 상세보기 -->
 	<select id="noticeOne" resultType="vo.NoticeVO" >
@@ -30,7 +42,7 @@
 	
 	<!-- 수정 -->
 	<update id="noticeUpdate">
-		update notice set title=#{title}, content=#{content} where seq=#{seq}
+		update notice set title=#{title}, content=#{content}, regdate=now() where seq=#{seq}
 	</update>
 
 	<!-- 삭제 -->
