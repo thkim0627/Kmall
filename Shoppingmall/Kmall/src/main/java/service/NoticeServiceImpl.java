@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import criteria.Criteria;
 import mapperInterface.NoticeMapper;
 import vo.NoticeVO;
 
@@ -21,8 +22,18 @@ public class NoticeServiceImpl implements NoticeService {
 		return mapper.noticeList();
 	} 
 	
-	// 조회 - 페이징
+	// 게시물 총 페이지수
+	@Override
+	public int noticeTotal() {
+		return mapper.noticeTotal();
+	}  
 	
+	// 조회 - 페이징
+	@Override
+	public List<NoticeVO> noticeListPaging(Criteria cri) {
+		return mapper.noticeListPaging(cri);
+	}
+	 
 	// 상세보기
 	@Override
 	public NoticeVO noticeOne(NoticeVO vo) {
