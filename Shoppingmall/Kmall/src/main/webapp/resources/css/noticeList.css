@@ -78,12 +78,12 @@ td:not(#none) {
 	cursor: pointer;	
 }
 
-/* 조회 - 페이징 */
+/* 리스트 - 페이징 */
 .pageInfo {
 	list-style: none;
 	display: flex;
 	justify-content: center;
-	margin: 3rem 3.5rem 7.3rem 0;
+	margin: 3rem 3.5rem 7.25rem 0;
 }
 
 .pageInfo li {
@@ -101,4 +101,31 @@ td:not(#none) {
 
 .pageInfo a:hover {
 	color: gray;
+}
+
+/* 리스트 - 검색 */
+.search_wrap {
+	z-index: 10;
+	position: absolute;
+	margin: 5.5rem 0 0 70.3rem;
+}
+
+#type {  height: 1.6rem; }
+#keyword { height: 1.2rem; }
+
+#searchBtn {
+	color: white;
+	background-color: black;
+	font-size: 0.8rem;
+    font-weight: normal;
+	width: 5rem;
+	height: 1.55rem;
+}
+
+#searchBtn:hover {
+	color: black;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: rgba(0, 0, 0, 0.4);
+	transition: all 0.4s ease-in;
+	cursor: pointer;
 }
