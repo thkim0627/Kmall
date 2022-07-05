@@ -80,8 +80,8 @@
 		<section>
 			<div id="goodsCont">
 				<!-- 제목 -->
-				<div id="category" style="width: 6rem;">
-					<a href="shop">SHOP</a> / <a href="atc">ATC</a>
+				<div id="category" style="width: 7rem;">
+					<a href="shop">SHOP</a> / <a href="outer">OUTER</a>
 				</div>
 				<!-- 상품목록1 -->	
 				<ul id="goodsList">
