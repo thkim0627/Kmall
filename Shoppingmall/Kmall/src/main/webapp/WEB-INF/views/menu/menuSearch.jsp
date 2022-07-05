@@ -23,23 +23,23 @@
 		        <ul id="shopMenu">
 					<c:if test="${empty LoginID || not empty LoginID}">
 						<li>
-							<a href="#">SHOP</a>
+							<a href="shop">SHOP</a>
 							<ul class="shopMenuDepth">
-								<li><a href="#">ALL</a></li>
-								<li><a href="#">OUTER</a></li>
-								<li><a href="#">TOP</a></li>
-								<li><a href="#">BOTTOM</a></li>
-								<li><a href="#">ONEPIECE</a></li>
-								<li><a href="#">SKIRT</a></li>
-								<li><a href="#">SHOES</a></li>
-								<li><a href="#">BAG</a></li>
-								<li><a href="#">HEADWEAR</a></li>
-								<li><a href="#">UNDERWEAR</a></li>
-								<li><a href="#">ATC</a></li>
-								<li><a href="#">ETC</a></li>	
+								<li><a href="shop">ALL</a></li>
+								<li><a href="outer">OUTER</a></li>
+								<li><a href="top">TOP</a></li>
+								<li><a href="bottom">BOTTOM</a></li>
+								<li><a href="onepiece">ONEPIECE</a></li>
+								<li><a href="skirt">SKIRT</a></li>
+								<li><a href="shoes">SHOES</a></li>
+								<li><a href="bag">BAG</a></li>
+								<li><a href="headwear">HEADWEAR</a></li>
+								<li><a href="underwear">UNDERWEAR</a></li>
+								<li><a href="atc">ATC</a></li>
+								<li><a href="etc">ETC</a></li>	
 							</ul>
 						</li>			
-							<li><a href="#">SALE</a></li>
+							<li><a href="sale">SALE</a></li>
 							<li><a href="#">EVENT</a></li>
 							<li><a href="#">MAGAZINE</a></li>
 							<li><a href="menucontact">CONTACT</a></li>
@@ -59,7 +59,7 @@
 							<li><a href="clientloginf">LOGIN</a></li>
 							<li><a href="clientjoinf">JOIN</a></li>
 							<li><a href="noticelist">NOTICE</a></li>
-							<li><a href="#">SEARCH</a></li>
+							<li><a href="menusearch">SEARCH</a></li>
 						</c:if>
 						<!-- 로그인 후 표시 메뉴-->
 						<c:if test="${not empty LoginID}">
