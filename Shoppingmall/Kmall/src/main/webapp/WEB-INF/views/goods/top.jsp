@@ -81,7 +81,7 @@
 			<div id="goodsCont">
 				<!-- 제목 -->
 				<div id="category" style="width: 6rem;">
-					<a href="shop">SHOP</a> / <a href="atc">ATC</a>
+					<a href="shop">SHOP</a> / <a href="top">TOP</a>
 				</div>
 				<!-- 상품목록1 -->	
 				<ul id="goodsList">
