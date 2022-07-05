@@ -24,23 +24,23 @@
 		        <ul id="shopMenu">
 					<c:if test="${empty LoginID || not empty LoginID}">
 						<li>
-							<a href="#">SHOP</a>
+							<a href="shop">SHOP</a>
 							<ul class="shopMenuDepth">
-								<li><a href="#">ALL</a></li>
-								<li><a href="#">OUTER</a></li>
-								<li><a href="#">TOP</a></li>
-								<li><a href="#">BOTTOM</a></li>
-								<li><a href="#">ONEPIECE</a></li>
-								<li><a href="#">SKIRT</a></li>
-								<li><a href="#">SHOES</a></li>
-								<li><a href="#">BAG</a></li>
-								<li><a href="#">HEADWEAR</a></li>
-								<li><a href="#">UNDERWEAR</a></li>
-								<li><a href="#">ATC</a></li>
-								<li><a href="#">ETC</a></li>	
+								<li><a href="shop">ALL</a></li>
+								<li><a href="outer">OUTER</a></li>
+								<li><a href="top">TOP</a></li>
+								<li><a href="bottom">BOTTOM</a></li>
+								<li><a href="onepiece">ONEPIECE</a></li>
+								<li><a href="skirt">SKIRT</a></li>
+								<li><a href="shoes">SHOES</a></li>
+								<li><a href="bag">BAG</a></li>
+								<li><a href="headwear">HEADWEAR</a></li>
+								<li><a href="underwear">UNDERWEAR</a></li>
+								<li><a href="atc">ATC</a></li>
+								<li><a href="etc">ETC</a></li>	
 							</ul>
 						</li>			
-							<li><a href="#">SALE</a></li>
+							<li><a href="sale">SALE</a></li>
 							<li><a href="#">EVENT</a></li>
 							<li><a href="#">MAGAZINE</a></li>
 							<li><a href="menucontact">CONTACT</a></li>
@@ -81,6 +81,19 @@
 		<table id="noticeTableBox">
 			<!-- 제목 -->
 			<caption id="noticeTitle">NOTICE</caption>
+			<!-- 리스트 - 검색 -->
+			<div class="search_wrap">
+				<div class="search_area">
+					<select name="type" id="type">
+		                <option value="" <c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>선택</option>
+		                <option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
+		                <option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
+		                <option value="W" <c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>작성자</option>
+            		</select>   
+					<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">
+					<button id="searchBtn">SEARCH</button>
+				</div>
+			</div>
 			<!-- 부제목 -->
 			<thead>
 				<tr>
@@ -112,7 +125,8 @@
 				</c:if>
 			</tbody>
 		</table>
-		<!-- 조회 - 페이징 -->
+
+		<!-- 리스트 - 페이징 -->
 		<div class="pageInfo_wrap" id="pageInfo_wrap">
 			<div class="pageInfo_area">
 				<ul id="pageInfo" class="pageInfo">
@@ -133,13 +147,16 @@
 		</div>
 
 		<form id="moveForm" method="get">
-			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
-			<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+			<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+			<input type="hidden" name="type" value="${pageMaker.cri.type}">
 		</form>
 		
 		<script>
 			let moveForm = $("#moveForm");
-
+			
+			// 리스트 - 페이징
 			$(".pageInfo a").on("click", function(e){
 		        e.preventDefault();
 		        moveForm.find("input[name='pageNum']").val($(this).attr("href"));
@@ -147,6 +164,30 @@
 		        moveForm.submit();
 		        
 		    });
+			
+			
+			// 리스트 - 검색
+			$(".search_area button").on("click", function(e) {
+				e.preventDefault();
+
+				let type = $(".search_area select").val();
+				let keyword = $(".search_area input[name='keyword']").val();
+
+				if (!type) {
+					alert("검색 종류를 선택해주세요.");
+					return false;
+				}
+
+				if (!keyword) {
+					alert("검색 키워드를 입력해주세요.");
+					return false;
+				}
+
+				moveForm.find("input[name='type']").val(type);
+				moveForm.find("input[name='keyword']").val(keyword);
+				moveForm.find("input[name='pageNum']").val(1);
+				moveForm.submit();
+			});
 		</script>
 	</main>
 	
