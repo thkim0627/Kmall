@@ -1,7 +1,13 @@
 # # Kmall (개발중)
 ###### 개인 프로젝트 쇼핑몰 웹사이트 입니다:)
-## Kmall 메인페이지
-<p align="center"><img src = "https://user-images.githubusercontent.com/107676815/177061448-be672f35-2cd4-4f5e-8d90-97e410a263c3.png" width="70%" height="70%"></p>
+## Kmall
+![KakaoTalk_20230708_145359680](https://github.com/thkim0627/Kmall/assets/107676815/d4da987e-5cf6-4239-9c8c-f71bde7ef3dd)
+![KakaoTalk_20230708_145359680_01](https://github.com/thkim0627/Kmall/assets/107676815/b316d327-c12c-4520-8cbb-4a93599ff1eb)
+![KakaoTalk_20230708_145359680_02](https://github.com/thkim0627/Kmall/assets/107676815/ca803341-6d39-4634-9da8-d4d026e41e28)
+![KakaoTalk_20230708_145359680_03](https://github.com/thkim0627/Kmall/assets/107676815/64d8705e-8e48-4a59-9d4f-1133880a5fd4)
+![KakaoTalk_20230708_145359680_04](https://github.com/thkim0627/Kmall/assets/107676815/ca1c5c44-bdc1-4601-8086-6f1b08640cf8)
+![KakaoTalk_20230708_145359680_05](https://github.com/thkim0627/Kmall/assets/107676815/f13deb96-ef9a-4ca4-9375-5fae294fa5e8)
+![KakaoTalk_20230708_145359680_06](https://github.com/thkim0627/Kmall/assets/107676815/092ce343-0a6e-4549-b4ec-88a46b34c0f9)
 
 ## # 서비스 소개
 ###### - 기획의도
